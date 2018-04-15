@@ -10,8 +10,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.mobile.client.AWSStartupHandler;
+import com.amazonaws.mobile.client.AWSStartupResult;
 
 import grp2.fitness.Fragments.DiaryFragment;
 import grp2.fitness.Fragments.HomeFragment;
@@ -30,6 +35,14 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        AWSMobileClient.getInstance().initialize(this, new AWSStartupHandler() {
+//            @Override
+//            public void onComplete(AWSStartupResult awsStartupResult) {
+//                Log.d("YourMainActivity", "AWSMobileClient is instantiated and you are connected to AWS!");
+//            }
+//        }).execute();
+
         setContentView(R.layout.activity_navigation);
 
         toolbar         = findViewById(R.id.navigation_toolbar);
@@ -83,7 +96,7 @@ public class NavigationActivity extends AppCompatActivity {
         switch (menuItemId) {
             case R.id.home:
                 return HomeFragment.class;
-            case R.id.recipies:
+            case R.id.recipes:
                 return RecipeFragment.class;
             case R.id.diary:
                 return DiaryFragment.class;
